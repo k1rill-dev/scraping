@@ -21,9 +21,11 @@ def get_ongoing():
     for item in titles:
         title_head = item.find('div', class_='b-g-title').text.strip()
         title_href = item.find('a', class_='media_link l_e_m_l').get('href')
+        title_series = item.find('span', class_='ml_padding').text.strip()
         dictt = {
             'head' : title_head,
-            'link' : title_href
+            'link' : title_href,
+            'series' : title_series
         }
         titles_data.append(dictt)
     print(titles_data)

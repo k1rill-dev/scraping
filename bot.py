@@ -28,7 +28,8 @@ async def start(message: types.Message):
     with open('data.json', encoding='utf-8') as file:
         data = json.load(file)
     for item in data:
-        card = f'{hlink(item.get("head"), item.get("link"))}'
+        card = f'{hlink(item.get("head"), item.get("link"))}\n' \
+               f'{hbold("Серия:")} {item.get("series")}'
         await message.answer(card)
 
 def main():

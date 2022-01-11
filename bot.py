@@ -5,6 +5,8 @@ from aiogram.utils.markdown import hbold, hlink
 from dotenv import load_dotenv
 import os
 from main import get_ongoing
+from datetime import datetime
+
 
 # инициализация .env файла
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
@@ -19,7 +21,9 @@ async def start(message: types.Message):
     await  message.answer('Жди, и скоро скину годноты')
 
     get_ongoing()
-    await message.answer('Сегодня вышли серии:')
+    date = datetime.today().strftime('%d-%m-%Y')
+
+    await message.answer(f'Сегодня {date} вышли серии:')
 
     with open('data.json', encoding='utf-8') as file:
         data = json.load(file)
